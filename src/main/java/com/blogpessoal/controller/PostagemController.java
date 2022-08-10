@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blogpessoal.model.Postagem;
 import com.blogpessoal.repository.PostagemRepository;
 import com.blogpessoal.repository.TemasRepository;
+import com.blogpessoal.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/postagens")
@@ -28,6 +29,9 @@ public class PostagemController {
 	
 	@Autowired
 	private TemasRepository temasRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll(){
@@ -53,7 +57,11 @@ public class PostagemController {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(postagemRepository.save(postagem));
 		
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();	}
+		if(usuarioRepository.existsById(postagem.getUsuario().getId()))
+			return ResponseEntity.status(HttpStatus.CREATED)
+					.body(postagemRepository.save(postagem));
+		
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();}
 	
 	@PutMapping
 	public ResponseEntity<Postagem> put (@RequestBody Postagem postagem){
