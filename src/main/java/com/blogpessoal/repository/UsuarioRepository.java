@@ -1,5 +1,6 @@
 package com.blogpessoal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.blogpessoal.model.Usuario;
@@ -16,5 +17,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	 * select * from tb_usuarios where usuario = "usuario procurado"
 	 */
 	public Optional<Usuario> findByUsuario(String usuario);
+	
+	public List <Usuario> findAllByNomeContainingIgnoreCase (String nome);
 
 }

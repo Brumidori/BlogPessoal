@@ -32,6 +32,25 @@ import com.blogpessoal.repository.UsuarioRepository;
  * A Anotação @Service indica que esta é uma Classe de Serviço, ou seja,
  * implementa todas regras de negócio do Recurso Usuário.
  */
+/**
+ *  A Classe UsuarioService implementa as regras de negócio do Recurso Usuario.
+ *  
+ *  Regras de negócio são as particularidades das funcionalidades a serem 
+ *  implementadas no objeto, tais como:
+ *  
+ *  1) O Usuário não pode estar duplicado no Banco de dados
+ *  2) A senha do Usuario deve ser criptografada
+ *  
+ *  Observe que toda a implementação dos metodos Cadastrar, Atualizar e 
+ *  Logar estão implmentadas na classe de serviço, enquanto a Classe
+ *  Controller se limitará a checar a resposta da requisição.
+ */
+
+ /**
+ * A Anotação @Service indica que esta é uma Classe de Serviço, ou seja,
+ * implementa todas regras de negócio do Recurso Usuário.
+ */
+
 
 
 @Service
